@@ -10,4 +10,17 @@ let Person = require('../models/person');
         });
     });
 
+    router.get('/person', function (req, res) {
+        res.render('person');
+    });
+
+    router.post('/addPerson', function(req, res) {
+        const myPerson = new Person({
+            nombre: req.body.nombre,
+            edad: req.body.edad,
+            tipoSangre: req.body.tipoSangre,
+            nss: req.body.nss }); //crea la entidad
+        myPerson.save(); //guarda en bd
+    });
+
 module.exports=router;
